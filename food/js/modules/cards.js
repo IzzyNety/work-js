@@ -1,3 +1,5 @@
+import {getResource} from '../services/services';
+
 function cards() {
 // Используем классы для карточек
 
@@ -42,30 +44,20 @@ class MenuCard {
   }
 }
 
-const getResource = async (url) => {
-  const res = await fetch(url);
-
-  if (!res.ok) {
-    throw new Error(`Could not featch ${url}, status: ${res.status}`);
-  }
-
-  return await res.json();
-};
-
-/*   getResource('http://localhost:3000/menu')
+  getResource('http://localhost:3000/menu')
   .then(data =>{
     data.forEach(({img, altimg, title, descr, price}) => {
       new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
     });
-  }); */
+  });
 
-  axios.get('http://localhost:3000/menu')
+/*   axios.get('http://localhost:3000/menu')
   .then(data => {
     data.data.forEach(({img, altimg, title, descr, price}) => {
       new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
   });
-});
+}); */
 
 }
 
-module.exports = cards;
+export default cards;
